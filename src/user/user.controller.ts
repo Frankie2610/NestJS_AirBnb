@@ -8,10 +8,11 @@ import {
   Delete,
   Query,
   Res,
+  Put,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+// import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('NguoiDung')
@@ -19,10 +20,11 @@ import { ApiTags } from '@nestjs/swagger';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // update user
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  // tạo mới user
+  @Post('/add-user')
+  async addUser(@Body() userDto: UserDto, @Res() res): Promise<any> {
+    const data = await this.userService.addUser(userDto);
+    res.status(data.status).json(data);
   }
 
   // lấy user list
@@ -62,8 +64,18 @@ export class UserController {
 
   // xóa user theo id
   @Delete(':id')
-  async deleteUser(@Param('id') id: string, @Res() res): Promise<any> {
-    const deletedUser = await this.userService.deleteUser(+id);
-    await res.status(deletedUser.status).json(deletedUser);
+  async deleteUser(@Param('id') id: number, @Res() res): Promise<any> {
+    const data = await this.userService.deleteUser(+id);
+    await res.status(data.status).json(data);
+  }
+  // update user
+  @Put(':id')
+  async updateUser(
+    @Param('id') id: number,
+    @Body() userDto: UserDto,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.userService.updateUser(+id, userDto);
+    await res.status(data.status).json(data);
   }
 }

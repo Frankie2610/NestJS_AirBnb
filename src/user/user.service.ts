@@ -1,14 +1,40 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+// import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaClient } from '@prisma/client';
+import { log } from 'console';
 
 @Injectable()
 export class UserService {
   prisma = new PrismaClient();
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async addUser(userDto: UserDto): Promise<any> {
+    try {
+      const { name, email, pass_word, phone, birth_day, gender, role } =
+        userDto;
+      // let name = createUserDto.name;
+      const newUser = {
+        name: name,
+        email: email,
+        pass_word: pass_word,
+        phone: phone,
+        birth_day: birth_day,
+        gender: gender,
+        role: role,
+      };
+      await this.prisma.nguoiDung.create({
+        data: newUser,
+      });
+      return {
+        status: 201,
+        data: newUser,
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        message: error,
+      };
+    }
   }
 
   async getUserList(): Promise<any> {
@@ -71,10 +97,6 @@ export class UserService {
     }
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
   async deleteUser(id: number): Promise<any> {
     try {
       const deletedComment = await this.prisma.binhLuan.deleteMany({
@@ -97,6 +119,37 @@ export class UserService {
       return {
         status: 200,
         message: 'User is deleted successfully',
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        message: error,
+      };
+    }
+  }
+
+  async updateUser(id: number, userDto: UserDto): Promise<any> {
+    try {
+      const { name, email, pass_word, phone, birth_day, gender, role } =
+        userDto;
+      const user = {
+        name: name,
+        email: email,
+        pass_word: pass_word,
+        phone: phone,
+        birth_day: birth_day,
+        gender: gender,
+        role: role,
+      };
+      await this.prisma.nguoiDung.update({
+        where: {
+          id: id,
+        },
+        data: user,
+      });
+      return {
+        status: 200,
+        data: user,
       };
     } catch (error) {
       return {
