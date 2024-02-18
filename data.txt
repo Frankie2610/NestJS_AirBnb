@@ -1,0 +1,142 @@
+CREATE TABLE NguoiDung (
+id INT PRIMARY KEY AUTO_INCREMENT,
+name varchar(100),
+email varchar(100),
+pass_word varchar(100),
+phone varchar(100),
+birth_day varchar(100),
+gender varchar(100),
+role varchar(100)
+)
+
+INSERT INTO NguoiDung (name, email, pass_word, phone, birth_day, gender, role) VALUES
+('Nguyen Van A', 'nguyenvana@example.com', 'password123', '0123456789', '1990-01-01', 'Male', 'User'),
+('Tran Thi B', 'tranthib@example.com', 'password123', '0123456781', '1991-02-02', 'Female', 'User'),
+('Le Van C', 'levanc@example.com', 'password123', '0123456782', '1992-03-03', 'Male', 'User'),
+('Pham Thi D', 'phamthid@example.com', 'password123', '0123456783', '1993-04-04', 'Female', 'Admin'),
+('Hoang Van E', 'hoangvane@example.com', 'password123', '0123456784', '1994-05-05', 'Male', 'User'),
+('Vu Thi F', 'vuthif@example.com', 'password123', '0123456785', '1995-06-06', 'Female', 'User'),
+('Dang Van G', 'dangvang@example.com', 'password123', '0123456786', '1996-07-07', 'Male', 'User'),
+('Bui Thi H', 'buithih@example.com', 'password123', '0123456787', '1997-08-08', 'Female', 'Admin'),
+('Do Van I', 'dovani@example.com', 'password123', '0123456788', '1998-09-09', 'Male', 'User'),
+('Luong Thi J', 'luongthij@example.com', 'password123', '0123456789', '1999-10-10', 'Female', 'User'),
+('Nguyen Van K', 'nguyenvank@example.com', 'password123', '0123456790', '2000-11-11', 'Male', 'User'),
+('Tran Thi L', 'tranthil@example.com', 'password123', '0123456791', '2001-12-12', 'Female', 'Admin'),
+('Le Van M', 'levanm@example.com', 'password123', '0123456792', '2002-01-13', 'Male', 'User'),
+('Pham Thi N', 'phamthin@example.com', 'password123', '0123456793', '2003-02-14', 'Female', 'User'),
+('Hoang Van O', 'hoangvano@example.com', 'password123', '0123456794', '2004-03-15', 'Male', 'User'),
+('Vu Thi P', 'vuthip@example.com', 'password123', '0123456795', '2005-04-16', 'Female', 'Admin'),
+('Dang Van Q', 'dangvanq@example.com', 'password123', '0123456796', '2006-05-17', 'Male', 'User'),
+('Bui Thi R', 'buithir@example.com', 'password123', '0123456797', '2007-06-18', 'Female', 'User'),
+('Do Van S', 'dovans@example.com', 'password123', '0123456798', '2008-07-19', 'Male', 'User'),
+('Luong Thi T', 'luongthit@example.com', 'password123', '0123456799', '2009-08-20', 'Female', 'Admin');
+
+CREATE TABLE Phong (
+id INT PRIMARY KEY AUTO_INCREMENT,
+ten_phong varchar(100),
+khach INT,
+phong_ngu INT,
+giuong INT,
+phong_tam INT,
+mo_ta varchar(255),
+gia_tien INT,
+may_giat BOOLEAN,
+ban_la BOOLEAN,
+tivi BOOLEAN,
+dieu_hoa BOOLEAN,
+wifi BOOLEAN,
+bep BOOLEAN,
+do_xe BOOLEAN,
+ho_boi BOOLEAN,
+ban_ui BOOLEAN,
+hinh_anh varchar(255)
+)
+
+
+INSERT INTO Phong (ten_phong, khach, phong_ngu, giuong, phong_tam, mo_ta, gia_tien, may_giat, ban_la, tivi, dieu_hoa, wifi, bep, do_xe, ho_boi, ban_ui, hinh_anh) VALUES
+('Phòng Deluxe', 2, 1, 1, 1, 'Phòng rộng rãi với view thành phố', 1500000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/deluxe_room.jpg'),
+('Phòng Superior', 2, 1, 1, 1, 'Phòng hiện đại, tiện nghi', 1000000, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, 'images/superior_room.jpg'),
+('Phòng Family', 4, 2, 2, 2, 'Lý tưởng cho kỳ nghỉ gia đình', 2000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/family_room.jpg'),
+('Studio', 2, 1, 1, 1, 'Căn hộ studio với đầy đủ tiện nghi', 1300000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/studio.jpg'),
+('Penthouse', 5, 3, 3, 2, 'Penthouse sang trọng với tầm nhìn tuyệt vời', 5000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/penthouse.jpg'),
+('Phòng Double', 2, 1, 1, 1, 'Phòng ngủ tiện nghi cho hai người', 800000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/double_room.jpg'),
+('Bungalow', 2, 1, 1, 1, 'Bungalow gần biển, không gian yên bình', 2500000, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, 'images/bungalow.jpg'),
+('Phòng Single', 1, 1, 1, 1, 'Phòng cá nhân nhỏ gọn, tiện nghi', 600000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/single_room.jpg'),
+('Căn hộ Dịch vụ', 3, 2, 2, 2, 'Căn hộ dịch vụ đầy đủ tiện ích cho cả gia đình', 3000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/service_apartment.jpg'),
+('Villa Biển', 6, 3, 4, 3, 'Villa sang trọng bên bờ biển với hồ bơi riêng', 7000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/beach_villa.jpg');
+
+CREATE TABLE ViTri (
+id INT PRIMARY KEY AUTO_INCREMENT,
+ten_vi_tri varchar(100),
+tinh_thanh varchar(100),
+quoc_gia INT,
+hinh_anh varchar(255)
+)
+
+INSERT INTO ViTri (ten_vi_tri, tinh_thanh, quoc_gia, hinh_anh) VALUES
+('Quận 1', 'Hồ Chí Minh', 1, 'images/quan1_hcm.jpg'),
+('Quận 3', 'Hồ Chí Minh', 1, 'images/quan3_hcm.jpg'),
+('Ba Đình', 'Hà Nội', 1, 'images/ba_dinh_hn.jpg'),
+('Hoàn Kiếm', 'Hà Nội', 1, 'images/hoan_kiem_hn.jpg'),
+('Hải Châu', 'Đà Nẵng', 1, 'images/hai_chau_dn.jpg'),
+('Sơn Trà', 'Đà Nẵng', 1, 'images/son_tra_dn.jpg'),
+('Ninh Hòa', 'Nha Trang', 1, 'images/ninh_hoa_nt.jpg'),
+('Vĩnh Hải', 'Nha Trang', 1, 'images/vinh_hai_nt.jpg'),
+('Huế', 'Thừa Thiên Huế', 1, 'images/hue_city.jpg'),
+('Phú Hội', 'Huế', 1, 'images/phu_hoi_hue.jpg');
+
+CREATE TABLE DatPhong (
+id INT PRIMARY KEY AUTO_INCREMENT,
+ma_phong INT,
+FOREIGN KEY(ma_phong) REFERENCES Phong(id),
+ngay_den DATE,
+ngay_di DATE,
+so_luong_khach INT,
+ma_nguoi_dat INT,
+FOREIGN KEY(ma_nguoi_dat) REFERENCES NguoiDung(id),
+)
+
+INSERT INTO DatPhong (ma_phong, ngay_den, ngay_di, so_luong_khach, ma_nguoi_dat) VALUES
+(1, '2024-03-01', '2024-03-05', 2, 1),
+(2, '2024-03-02', '2024-03-06', 1, 2),
+(3, '2024-03-03', '2024-03-07', 2, 3),
+(4, '2024-03-04', '2024-03-08', 3, 4),
+(5, '2024-03-05', '2024-03-09', 2, 5),
+(6, '2024-03-06', '2024-03-10', 4, 6),
+(7, '2024-03-07', '2024-03-11', 1, 7),
+(8, '2024-03-08', '2024-03-12', 2, 8),
+(9, '2024-03-09', '2024-03-13', 3, 9),
+(10, '2024-03-10', '2024-03-14', 2, 10),
+(1, '2024-03-15', '2024-03-19', 2, 11),
+(2, '2024-03-16', '2024-03-20', 1, 12),
+(3, '2024-03-17', '2024-03-21', 2, 13),
+(4, '2024-03-18', '2024-03-22', 3, 14),
+(5, '2024-03-19', '2024-03-23', 2, 15),
+(6, '2024-03-20', '2024-03-24', 4, 16),
+(7, '2024-03-21', '2024-03-25', 1, 17),
+(8, '2024-03-22', '2024-03-26', 2, 18),
+(9, '2024-03-23', '2024-03-27', 3, 19),
+(10, '2024-03-24', '2024-03-28', 2, 20);
+
+CREATE TABLE BinhLuan (
+id INT PRIMARY KEY AUTO_INCREMENT,
+ma_phong INT,
+FOREIGN KEY (ma_phong) REFERENCES Phong(id),
+ma_nguoi_binh_luan INT,
+FOREIGN KEY (ma_nguoi_binh_luan) REFERENCES NguoiDung(id),
+ngay_binh_luan DATE,
+noidung varchar(255),
+sao_binh_luan INT
+)
+
+INSERT INTO BinhLuan (ma_phong, ma_nguoi_binh_luan, ngay_binh_luan, noidung, sao_binh_luan) VALUES
+(1, 1, '2024-03-01', 'Phòng này rất sạch sẽ và thoải mái.', 5),
+(2, 2, '2024-03-02', 'Gia đình tôi rất hài lòng với dịch vụ.', 4),
+(3, 3, '2024-03-03', 'Không gian ở đây rất yên tĩnh và dễ chịu.', 5),
+(4, 4, '2024-03-04', 'Nhân viên phục vụ nhiệt tình.', 4),
+(5, 5, '2024-03-05', 'Phòng đẹp và giá cả hợp lý.', 4),
+(6, 6, '2024-03-06', 'Có những tiện nghi tốt như máy giặt và wifi.', 3),
+(7, 7, '2024-03-07', 'Không gian thoải mái và gần trung tâm.', 5),
+(8, 8, '2024-03-08', 'Chỗ ở này rất đáng giá tiền.', 4),
+(9, 9, '2024-03-09', 'Phòng tắm sạch sẽ và thoải mái.', 5),
+(10, 10, '2024-03-10', 'Tôi sẽ quay lại lần sau.', 5);
