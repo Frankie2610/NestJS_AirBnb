@@ -10,7 +10,9 @@ import {
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomDto } from './dto/room.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Phong')
 @Controller('phong-thue')
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}
