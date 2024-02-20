@@ -2,37 +2,37 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class RoomDto {
   @ApiProperty()
-  room: string;
+  tenPhong: string;
   @ApiProperty()
-  customer: number;
+  khach: number;
   @ApiProperty()
-  bedRoom: number;
+  phongNgu: number;
   @ApiProperty()
-  bed: number;
+  giuong: number;
   @ApiProperty()
-  bathRoom: number;
+  phongTam: number;
   @ApiProperty()
-  description: string;
+  moTa: string;
   @ApiProperty()
-  price: number;
+  giaTien: number;
   @ApiProperty()
-  washingMachine: boolean;
+  mayGiat: boolean;
   @ApiProperty()
-  streamIron: boolean;
+  banLa: boolean;
   @ApiProperty()
   tivi: boolean;
   @ApiProperty()
-  airConditioner: boolean;
+  dieuHoa: boolean;
   @ApiProperty()
   wifi: boolean;
   @ApiProperty()
-  kitchen: boolean;
+  bep: boolean;
   @ApiProperty()
-  parking: boolean;
+  doXe: boolean;
   @ApiProperty()
-  pool: boolean;
+  hoBoi: boolean;
   @ApiProperty()
-  iron: boolean;
+  banUi: boolean;
   @ApiProperty()
-  photo: string;
+  hinhAnh: string;
 }

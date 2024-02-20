@@ -22,15 +22,17 @@ model BinhLuan {
 }
 
 model DatPhong {
-  id             Int       @id @default(autoincrement())
+  id             Int        @id @default(autoincrement())
   ma_phong       Int?
-  ngay_den       DateTime? @db.Date
-  ngay_di        DateTime? @db.Date
+  ngay_den       DateTime?  @db.Date
+  ngay_di        DateTime?  @db.Date
   so_luong_khach Int?
   ma_nguoi_dat   Int?
-  Phong          Phong?    @relation(fields: [ma_phong], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "DatPhong_ibfk_1")
+  Phong          Phong?     @relation(fields: [ma_phong], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "DatPhong_ibfk_1")
+  NguoiDung      NguoiDung? @relation(fields: [ma_nguoi_dat], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "DatPhong_ibfk_2")
 
   @@index([ma_phong], map: "ma_phong")
+  @@index([ma_nguoi_dat], map: "ma_nguoi_dat")
 }
 
 model NguoiDung {
@@ -43,10 +45,12 @@ model NguoiDung {
   gender    String?    @db.VarChar(100)
   role      String?    @db.VarChar(100)
   BinhLuan  BinhLuan[]
+  DatPhong  DatPhong[]
 }
 
 model Phong {
   id        Int        @id @default(autoincrement())
+  ma_vi_tri Int?
   ten_phong String?    @db.VarChar(100)
   khach     Int?
   phong_ngu Int?
@@ -66,6 +70,9 @@ model Phong {
   hinh_anh  String?    @db.VarChar(255)
   BinhLuan  BinhLuan[]
   DatPhong  DatPhong[]
+  ViTri     ViTri?     @relation(fields: [ma_vi_tri], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Phong_ibfk_1")
+
+  @@index([ma_vi_tri], map: "ma_vi_tri")
 }
 
 model ViTri {
@@ -74,4 +81,5 @@ model ViTri {
   tinh_thanh String? @db.VarChar(100)
   quoc_gia   Int?
   hinh_anh   String? @db.VarChar(255)
+  Phong      Phong[]
 }

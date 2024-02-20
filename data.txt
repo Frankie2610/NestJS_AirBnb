@@ -31,40 +31,6 @@ INSERT INTO NguoiDung (name, email, pass_word, phone, birth_day, gender, role) V
 ('Do Van S', 'dovans@example.com', 'password123', '0123456798', '2008-07-19', 'Male', 'User'),
 ('Luong Thi T', 'luongthit@example.com', 'password123', '0123456799', '2009-08-20', 'Female', 'Admin');
 
-CREATE TABLE Phong (
-id INT PRIMARY KEY AUTO_INCREMENT,
-ten_phong varchar(100),
-khach INT,
-phong_ngu INT,
-giuong INT,
-phong_tam INT,
-mo_ta varchar(255),
-gia_tien INT,
-may_giat BOOLEAN,
-ban_la BOOLEAN,
-tivi BOOLEAN,
-dieu_hoa BOOLEAN,
-wifi BOOLEAN,
-bep BOOLEAN,
-do_xe BOOLEAN,
-ho_boi BOOLEAN,
-ban_ui BOOLEAN,
-hinh_anh varchar(255)
-)
-
-
-INSERT INTO Phong (ten_phong, khach, phong_ngu, giuong, phong_tam, mo_ta, gia_tien, may_giat, ban_la, tivi, dieu_hoa, wifi, bep, do_xe, ho_boi, ban_ui, hinh_anh) VALUES
-('Phòng Deluxe', 2, 1, 1, 1, 'Phòng rộng rãi với view thành phố', 1500000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/deluxe_room.jpg'),
-('Phòng Superior', 2, 1, 1, 1, 'Phòng hiện đại, tiện nghi', 1000000, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, 'images/superior_room.jpg'),
-('Phòng Family', 4, 2, 2, 2, 'Lý tưởng cho kỳ nghỉ gia đình', 2000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/family_room.jpg'),
-('Studio', 2, 1, 1, 1, 'Căn hộ studio với đầy đủ tiện nghi', 1300000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/studio.jpg'),
-('Penthouse', 5, 3, 3, 2, 'Penthouse sang trọng với tầm nhìn tuyệt vời', 5000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/penthouse.jpg'),
-('Phòng Double', 2, 1, 1, 1, 'Phòng ngủ tiện nghi cho hai người', 800000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/double_room.jpg'),
-('Bungalow', 2, 1, 1, 1, 'Bungalow gần biển, không gian yên bình', 2500000, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, 'images/bungalow.jpg'),
-('Phòng Single', 1, 1, 1, 1, 'Phòng cá nhân nhỏ gọn, tiện nghi', 600000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/single_room.jpg'),
-('Căn hộ Dịch vụ', 3, 2, 2, 2, 'Căn hộ dịch vụ đầy đủ tiện ích cho cả gia đình', 3000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/service_apartment.jpg'),
-('Villa Biển', 6, 3, 4, 3, 'Villa sang trọng bên bờ biển với hồ bơi riêng', 7000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/beach_villa.jpg');
-
 CREATE TABLE ViTri (
 id INT PRIMARY KEY AUTO_INCREMENT,
 ten_vi_tri varchar(100),
@@ -85,6 +51,41 @@ INSERT INTO ViTri (ten_vi_tri, tinh_thanh, quoc_gia, hinh_anh) VALUES
 ('Huế', 'Thừa Thiên Huế', 1, 'images/hue_city.jpg'),
 ('Phú Hội', 'Huế', 1, 'images/phu_hoi_hue.jpg');
 
+CREATE TABLE Phong (
+id INT PRIMARY KEY AUTO_INCREMENT,
+ma_vi_tri INT,
+FOREIGN KEY(ma_vi_tri) REFERENCES ViTri(id),
+ten_phong varchar(100),
+khach INT,
+phong_ngu INT,
+giuong INT,
+phong_tam INT,
+mo_ta varchar(255),
+gia_tien INT,
+may_giat BOOLEAN,
+ban_la BOOLEAN,
+tivi BOOLEAN,
+dieu_hoa BOOLEAN,
+wifi BOOLEAN,
+bep BOOLEAN,
+do_xe BOOLEAN,
+ho_boi BOOLEAN,
+ban_ui BOOLEAN,
+hinh_anh varchar(255)
+)
+
+INSERT INTO Phong (ma_vi_tri, ten_phong, khach, phong_ngu, giuong, phong_tam, mo_ta, gia_tien, may_giat, ban_la, tivi, dieu_hoa, wifi, bep, do_xe, ho_boi, ban_ui, hinh_anh) VALUES
+(1,'Phòng Deluxe', 2, 1, 1, 1, 'Phòng rộng rãi với view thành phố', 1500000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/deluxe_room.jpg'),
+(2,'Phòng Superior', 2, 1, 1, 1, 'Phòng hiện đại, tiện nghi', 1000000, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, 'images/superior_room.jpg'),
+(3,'Phòng Family', 4, 2, 2, 2, 'Lý tưởng cho kỳ nghỉ gia đình', 2000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/family_room.jpg'),
+(4,'Studio', 2, 1, 1, 1, 'Căn hộ studio với đầy đủ tiện nghi', 1300000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, 'images/studio.jpg'),
+(5,'Penthouse', 5, 3, 3, 2, 'Penthouse sang trọng với tầm nhìn tuyệt vời', 5000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/penthouse.jpg'),
+(6, 'Phòng Double', 2, 1, 1, 1, 'Phòng ngủ tiện nghi cho hai người', 800000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/double_room.jpg'),
+(7, 'Bungalow', 2, 1, 1, 1, 'Bungalow gần biển, không gian yên bình', 2500000, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, 'images/bungalow.jpg'),
+(8, 'Phòng Single', 1, 1, 1, 1, 'Phòng cá nhân nhỏ gọn, tiện nghi', 600000, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, 'images/single_room.jpg'),
+(9, 'Căn hộ Dịch vụ', 3, 2, 2, 2, 'Căn hộ dịch vụ đầy đủ tiện ích cho cả gia đình', 3000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/service_apartment.jpg'),
+(10,'Villa Biển', 6, 3, 4, 3, 'Villa sang trọng bên bờ biển với hồ bơi riêng', 7000000, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 'images/beach_villa.jpg');
+
 CREATE TABLE DatPhong (
 id INT PRIMARY KEY AUTO_INCREMENT,
 ma_phong INT,
@@ -93,7 +94,7 @@ ngay_den DATE,
 ngay_di DATE,
 so_luong_khach INT,
 ma_nguoi_dat INT,
-FOREIGN KEY(ma_nguoi_dat) REFERENCES NguoiDung(id),
+FOREIGN KEY(ma_nguoi_dat) REFERENCES NguoiDung(id)
 )
 
 INSERT INTO DatPhong (ma_phong, ngay_den, ngay_di, so_luong_khach, ma_nguoi_dat) VALUES
@@ -140,3 +141,7 @@ INSERT INTO BinhLuan (ma_phong, ma_nguoi_binh_luan, ngay_binh_luan, noidung, sao
 (8, 8, '2024-03-08', 'Chỗ ở này rất đáng giá tiền.', 4),
 (9, 9, '2024-03-09', 'Phòng tắm sạch sẽ và thoải mái.', 5),
 (10, 10, '2024-03-10', 'Tôi sẽ quay lại lần sau.', 5);
+
+
+drop table NguoiDung
+
