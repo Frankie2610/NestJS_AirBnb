@@ -17,6 +17,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}
 
+  // tạo phòng thuê
   @Post()
   async createRoom(@Body() roomDto: RoomDto, @Res() res): Promise<any> {
     const data = await this.roomService.createRoom(roomDto);
