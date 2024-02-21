@@ -63,12 +63,14 @@ export class RoomController {
   }
 
   // lấy phòng theo vị trí
-  @Get('/lay-phong-theo-vi-tri/:maViTri')
+  @Get('/lay-phong-theo-vi-tri')
   async getRoomBaseOnLocation(
-    @Param('maViTri') maViTri: number,
+    @Query('maViTri') maViTri: number,
     @Res() res,
   ): Promise<any> {
-    const data = await this.roomService.getRoomBaseOnLocation(+maViTri);
+    console.log(maViTri);
+
+    const data = await this.roomService.getRoomBaseOnLocation(maViTri);
     res.status(data.status).json(data);
   }
 
