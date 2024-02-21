@@ -54,7 +54,7 @@ export class RoomController {
   // update phòng
   @Put(':id')
   async updateRoom(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() roomDto: RoomDto,
     @Res() res,
   ): Promise<any> {
@@ -63,14 +63,12 @@ export class RoomController {
   }
 
   // lấy phòng theo vị trí
-  @Get('/lay-phong-theo-vi-tri')
+  @Get('/lay-phong-theo-vi-tri/:maViTri')
   async getRoomBaseOnLocation(
-    @Query('maViTri') maViTri: number,
+    @Param('maViTri') id: number,
     @Res() res,
   ): Promise<any> {
-    console.log(maViTri);
-
-    const data = await this.roomService.getRoomBaseOnLocation(maViTri);
+    const data = await this.roomService.getRoomBaseOnLocation(id);
     res.status(data.status).json(data);
   }
 

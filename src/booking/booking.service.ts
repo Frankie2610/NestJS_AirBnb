@@ -1,15 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class BookingService {
+  prisma = new PrismaClient();
+
   create(createBookingDto: CreateBookingDto) {
     return 'This action adds a new booking';
   }
 
-  findAll() {
-    return `This action returns all booking`;
+  async getBookingList(): Promise<any> {
+    try {
+      const bookingList = await this.prisma.datPhong.findMany();
+      return {
+        status: 200,
+        data: bookingList,
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        message: error,
+      };
+    }
   }
 
   findOne(id: number) {

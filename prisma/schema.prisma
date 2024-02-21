@@ -79,7 +79,7 @@ model ViTri {
   id         Int     @id @default(autoincrement())
   ten_vi_tri String? @db.VarChar(100)
   tinh_thanh String? @db.VarChar(100)
-  quoc_gia   Int?
+  quoc_gia   String? @db.VarChar(100)
   hinh_anh   String? @db.VarChar(255)
   Phong      Phong[]
 }

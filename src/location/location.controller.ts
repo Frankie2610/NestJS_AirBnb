@@ -6,42 +6,66 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
+  Put,
 } from '@nestjs/common';
 import { LocationService } from './location.service';
-import { CreateLocationDto } from './dto/create-location.dto';
-import { UpdateLocationDto } from './dto/update-location.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { LocationDto } from './dto/location.dto';
 
 @ApiTags('ViTri')
-@Controller('location')
+@Controller('vi-tri')
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
-  @Post()
-  create(@Body() createLocationDto: CreateLocationDto) {
-    return this.locationService.create(createLocationDto);
-  }
-
+  // lấy vị trí
   @Get()
-  findAll() {
-    return this.locationService.findAll();
+  async getLocationList(@Res() res): Promise<any> {
+    const data = await this.locationService.getLocationList();
+    res.status(data.status).json(data);
   }
 
+  // tạo vị trí mới
+  @Post()
+  async addLocation(
+    @Body() locationDto: LocationDto,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.locationService.addLocation(locationDto);
+    res.status(data.status).json(data);
+  }
+
+  // tìm vị trí theo id
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.locationService.findOne(+id);
+  async getLocation(@Param('id') id: number, @Res() res) {
+    const data = await this.locationService.getLocation(+id);
+    res.status(data.status).json(data);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateLocationDto: UpdateLocationDto,
+  @Get('phan-trang-tim-kiem/:page/:size')
+  async getPaginationList(
+    @Param('page') page: number,
+    @Param('size') size: number,
+    @Res() res,
   ) {
-    return this.locationService.update(+id, updateLocationDto);
+    const data = await this.locationService.getPaginationList(page, size);
+    res.status(data.status).json(data);
+  }
+
+  // update vị trí
+  @Put(':id')
+  async updateLocation(
+    @Param('id') id: string,
+    @Body() locationDto: LocationDto,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.locationService.updateLocation(+id, locationDto);
+    res.status(data.status).json(data);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.locationService.remove(+id);
+  async deleteLocation(@Param('id') id: number, @Res() res): Promise<any> {
+    const data = await this.locationService.deleteLocation(+id);
+    res.status(data.status).json(data);
   }
 }

@@ -200,14 +200,10 @@ export class RoomService {
   }
 
   async getRoomBaseOnLocation(maViTri: number): Promise<any> {
-    console.log('Ok');
-
     try {
-      console.log(maViTri);
-
       const room = await this.prisma.phong.findMany({
         where: {
-          ma_vi_tri: maViTri,
+          ma_vi_tri: +maViTri,
         },
       });
       return {

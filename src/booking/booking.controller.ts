@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
 } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
@@ -13,7 +14,7 @@ import { UpdateBookingDto } from './dto/update-booking.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('DatPhong')
-@Controller('booking')
+@Controller('dat-phong')
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
@@ -23,8 +24,9 @@ export class BookingController {
   }
 
   @Get()
-  findAll() {
-    return this.bookingService.findAll();
+  async getBookingList(@Res() res): Promise<any> {
+    const data = await this.bookingService.getBookingList();
+    res.status(data.status).json(data);
   }
 
   @Get(':id')

@@ -35,21 +35,21 @@ CREATE TABLE ViTri (
 id INT PRIMARY KEY AUTO_INCREMENT,
 ten_vi_tri varchar(100),
 tinh_thanh varchar(100),
-quoc_gia INT,
+quoc_gia varchar(100),
 hinh_anh varchar(255)
 )
 
 INSERT INTO ViTri (ten_vi_tri, tinh_thanh, quoc_gia, hinh_anh) VALUES
-('Quận 1', 'Hồ Chí Minh', 1, 'images/quan1_hcm.jpg'),
-('Quận 3', 'Hồ Chí Minh', 1, 'images/quan3_hcm.jpg'),
-('Ba Đình', 'Hà Nội', 1, 'images/ba_dinh_hn.jpg'),
-('Hoàn Kiếm', 'Hà Nội', 1, 'images/hoan_kiem_hn.jpg'),
-('Hải Châu', 'Đà Nẵng', 1, 'images/hai_chau_dn.jpg'),
-('Sơn Trà', 'Đà Nẵng', 1, 'images/son_tra_dn.jpg'),
-('Ninh Hòa', 'Nha Trang', 1, 'images/ninh_hoa_nt.jpg'),
-('Vĩnh Hải', 'Nha Trang', 1, 'images/vinh_hai_nt.jpg'),
-('Huế', 'Thừa Thiên Huế', 1, 'images/hue_city.jpg'),
-('Phú Hội', 'Huế', 1, 'images/phu_hoi_hue.jpg');
+('Quận 1', 'Hồ Chí Minh', 'Việt Nam', 'images/quan1_hcm.jpg'),
+('Quận 3', 'Hồ Chí Minh', 'Việt Nam', 'images/quan3_hcm.jpg'),
+('Ba Đình', 'Hà Nội', 'Việt Nam', 'images/ba_dinh_hn.jpg'),
+('Hoàn Kiếm', 'Hà Nội', 'Việt Nam', 'images/hoan_kiem_hn.jpg'),
+('Hải Châu', 'Đà Nẵng', 'Việt Nam', 'images/hai_chau_dn.jpg'),
+('Sơn Trà', 'Đà Nẵng', 'Việt Nam', 'images/son_tra_dn.jpg'),
+('Ninh Hòa', 'Nha Trang', 'Việt Nam', 'images/ninh_hoa_nt.jpg'),
+('Vĩnh Hải', 'Nha Trang', 'Việt Nam', 'images/vinh_hai_nt.jpg'),
+('Huế', 'Thừa Thiên Huế', 'Việt Nam', 'images/hue_city.jpg'),
+('Phú Hội', 'Huế', 'Việt Nam', 'images/phu_hoi_hue.jpg');
 
 CREATE TABLE Phong (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -143,5 +143,5 @@ INSERT INTO BinhLuan (ma_phong, ma_nguoi_binh_luan, ngay_binh_luan, noidung, sao
 (10, 10, '2024-03-10', 'Tôi sẽ quay lại lần sau.', 5);
 
 
-drop table NguoiDung
+drop table ViTri
 
