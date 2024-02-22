@@ -7,10 +7,10 @@ import {
   Param,
   Delete,
   Res,
+  Put,
 } from '@nestjs/common';
 import { BookingService } from './booking.service';
-import { CreateBookingDto } from './dto/create-booking.dto';
-import { UpdateBookingDto } from './dto/update-booking.dto';
+import { BookingDto } from './dto/booking.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('DatPhong')
@@ -18,29 +18,52 @@ import { ApiTags } from '@nestjs/swagger';
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
-  @Post()
-  create(@Body() createBookingDto: CreateBookingDto) {
-    return this.bookingService.create(createBookingDto);
-  }
-
+  // lấy danh sách đặt phòng
   @Get()
   async getBookingList(@Res() res): Promise<any> {
     const data = await this.bookingService.getBookingList();
     res.status(data.status).json(data);
   }
 
+  // lấy danh sách đặt phòng theo id
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bookingService.findOne(+id);
+  async getBooking(@Param('id') id: number, @Res() res): Promise<any> {
+    const data = await this.bookingService.getBooking(+id);
+    res.status(data.status).json(data);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBookingDto: UpdateBookingDto) {
-    return this.bookingService.update(+id, updateBookingDto);
+  // lấy danh sách đặt phòng theo người dùng
+  @Get('/lay-theo-nguoi-dung/:maNguoiDung')
+  async getBookingBasedOnUser(
+    @Param('maNguoiDung') maNguoiDung: number,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.bookingService.getBookingBasedOnUser(+maNguoiDung);
+    res.status(data.status).json(data);
   }
 
+  // tạo booking
+  @Post()
+  async makeBooking(@Body() bookingDto: BookingDto, @Res() res): Promise<any> {
+    const data = await this.bookingService.makeBooking(bookingDto);
+    res.status(data.status).json(data);
+  }
+
+  // update đặt phòng
+  @Put(':id')
+  async updateBooking(
+    @Param('id') id: number,
+    @Body() bookingDto: BookingDto,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.bookingService.updateBooking(+id, bookingDto);
+    res.status(data.status).json(data);
+  }
+
+  // Xóa đặt phòng
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.bookingService.remove(+id);
+  async deleteBooking(@Param('id') id: number, @Res() res): Promise<any> {
+    const data = await this.bookingService.deleteBooking(+id);
+    res.status(data.status).json(data);
   }
 }

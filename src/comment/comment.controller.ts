@@ -6,39 +6,60 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
+  Put,
 } from '@nestjs/common';
 import { CommentService } from './comment.service';
-import { CreateCommentDto } from './dto/create-comment.dto';
-import { UpdateCommentDto } from './dto/update-comment.dto';
+import { CommentDto } from './dto/comment.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('BinhLuan')
-@Controller('comment')
+@Controller('binh-luan')
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
+  // tạo mới bình luận
   @Post()
-  create(@Body() createCommentDto: CreateCommentDto) {
-    return this.commentService.create(createCommentDto);
+  async createComment(
+    @Res() res,
+    @Body() commentDto: CommentDto,
+  ): Promise<any> {
+    const data = await this.commentService.createComment(commentDto);
+    res.status(data.status).json(data);
   }
 
+  // Lấy danh sách bình luận
   @Get()
-  findAll() {
-    return this.commentService.findAll();
+  async getCommentList(@Res() res): Promise<any> {
+    const data = await this.commentService.getCommentList();
+    res.status(data.status).json(data);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.commentService.findOne(+id);
+  // Lấy bình luận theo mã phòng
+  @Get('/lay-binh-luan-theo-phong/:maPhong')
+  async getComment(
+    @Param('maPhong') maPhong: number,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.commentService.getComment(+maPhong);
+    res.status(data.status).json(data);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
-    return this.commentService.update(+id, updateCommentDto);
+  // update bình luận
+  @Put(':id')
+  async updateComment(
+    @Param('id') id: string,
+    @Body() commentDto: CommentDto,
+    @Res() res,
+  ) {
+    const data = await this.commentService.updateComment(+id, commentDto);
+    res.status(data.status).json(data);
   }
 
+  // xóa bình luận
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.commentService.remove(+id);
+  async deleteComment(@Param('id') id: number, @Res() res): Promise<any> {
+    const data = await this.commentService.deleteComment(+id);
+    res.status(data.status).json(data);
   }
 }

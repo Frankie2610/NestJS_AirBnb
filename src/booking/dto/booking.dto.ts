@@ -1,0 +1,7 @@
+export class BookingDto {
+  maPhong: number;
+  ngayDen: Date;
+  ngayDi: Date;
+  soLuongKhach: number;
+  maNguoiDung: number;
+}
