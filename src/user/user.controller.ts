@@ -3,27 +3,50 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Query,
   Res,
   Put,
+  UseGuards,
+  Req,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './dto/user.dto';
-// import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiTags } from '@nestjs/swagger';
+
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiParam,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @ApiTags('NguoiDung')
+@ApiBearerAuth()
+@UseGuards(AuthGuard('jwt'))
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private cloudinaryService: CloudinaryService,
+  ) {}
 
   // tạo mới user
   @Post('/add-user')
-  async addUser(@Body() userDto: UserDto, @Res() res): Promise<any> {
-    const data = await this.userService.addUser(userDto);
+  async addUser(
+    @Body() userDto: UserDto,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const role = req.user.role;
+    const data = await this.userService.addUser(userDto, role);
     res.status(data.status).json(data);
   }
 
@@ -48,10 +71,12 @@ export class UserController {
     @Res() res,
   ): Promise<any> {
     const data = await this.userService.searchUser(tenNguoiDung);
-    await res.status(data.status).json(data);
+    res.status(data.status).json(data);
   }
 
   // phân trang tìm kiếm
+  @ApiParam({ name: 'page' })
+  @ApiParam({ name: 'size' })
   @Get('/phan-trang-tim-kiem/:page/:size')
   async getPaginationList(
     @Param('page') page: number,
@@ -68,14 +93,40 @@ export class UserController {
     const data = await this.userService.deleteUser(+id);
     await res.status(data.status).json(data);
   }
+
   // update user
   @Put(':id')
   async updateUser(
     @Param('id') id: number,
     @Body() userDto: UserDto,
     @Res() res,
+    @Req() req,
   ): Promise<any> {
-    const data = await this.userService.updateUser(+id, userDto);
+    // console.log(req.user);
+    const userId = req.user.id;
+    const data = await this.userService.updateUser(+id, userDto, +userId);
     await res.status(data.status).json(data);
+  }
+
+  //upload avarar
+  @Post('/upload-avatar')
+  @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: 'File to upload',
+    type: 'multipart/form-data',
+    required: true,
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  uploadImage(@UploadedFile() file: Express.Multer.File) {
+    return this.cloudinaryService.uploadImage(file);
   }
 }

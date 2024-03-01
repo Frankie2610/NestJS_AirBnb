@@ -8,12 +8,15 @@ import {
   Delete,
   Res,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import { BookingDto } from './dto/booking.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('DatPhong')
+@UseGuards(AuthGuard('jwt'))
 @Controller('dat-phong')
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}

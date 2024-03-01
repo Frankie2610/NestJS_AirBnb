@@ -9,12 +9,15 @@ import {
   Res,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomDto } from './dto/room.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Phong')
+@UseGuards(AuthGuard('jwt'))
 @Controller('phong-thue')
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}

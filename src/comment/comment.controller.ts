@@ -8,12 +8,15 @@ import {
   Delete,
   Res,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { CommentDto } from './dto/comment.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('BinhLuan')
+@UseGuards(AuthGuard('jwt'))
 @Controller('binh-luan')
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}

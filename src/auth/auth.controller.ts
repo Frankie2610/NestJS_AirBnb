@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ConfigService } from '@nestjs/config';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 import SigninDto from './dto/signin.dto';
 import SignupDto from './dto/signup.dto';
 
@@ -29,6 +29,7 @@ export class AuthController {
   }
 
   @Post('/signin')
+  @ApiBody({ type: SigninDto })
   async signin(@Body() body: SigninDto, @Res() res): Promise<any> {
     const data = await this.authService.signin(body);
     res.status(data.status).json(data);

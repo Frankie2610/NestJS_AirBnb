@@ -1,22 +1,41 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Req } from '@nestjs/common';
 import { UserDto } from './dto/user.dto';
 // import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaClient } from '@prisma/client';
-import { log } from 'console';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
   prisma = new PrismaClient();
 
-  async addUser(userDto: UserDto): Promise<any> {
+  async addUser(userDto: UserDto, role: string): Promise<any> {
+    const BCRYPT_FACTOR = 10;
+    if (role !== 'Admin' && role !== 'admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!!',
+      };
+    }
     try {
       const { name, email, pass_word, phone, birth_day, gender, role } =
         userDto;
-      // let name = createUserDto.name;
+      const user = await this.prisma.nguoiDung.findFirst({
+        where: {
+          email: email,
+        },
+      });
+      if (user) {
+        return {
+          status: 400,
+          message: 'User existed',
+        };
+      }
+      const encodePassword = bcrypt.hashSync(pass_word, BCRYPT_FACTOR);
+
       const newUser = {
         name: name,
         email: email,
-        pass_word: pass_word,
+        pass_word: encodePassword,
         phone: phone,
         birth_day: birth_day,
         gender: gender,
@@ -61,7 +80,9 @@ export class UserService {
     try {
       const userName = await this.prisma.nguoiDung.findMany({
         where: {
-          name: tenNguoiDung,
+          name: {
+            contains: tenNguoiDung,
+          },
         },
       });
       return {
@@ -128,14 +149,25 @@ export class UserService {
     }
   }
 
-  async updateUser(id: number, userDto: UserDto): Promise<any> {
+  async updateUser(id: number, userDto: UserDto, userId: number): Promise<any> {
+    const BCRYPT_FACTOR = 10;
+
+    if (id !== userId) {
+      return {
+        status: 400,
+        message: 'Unauthorized!!',
+      };
+    }
     try {
       const { name, email, pass_word, phone, birth_day, gender, role } =
         userDto;
-      const user = {
+
+      const encodePassword = bcrypt.hashSync(pass_word, BCRYPT_FACTOR);
+
+      const updatedUser = {
         name: name,
         email: email,
-        pass_word: pass_word,
+        pass_word: encodePassword,
         phone: phone,
         birth_day: birth_day,
         gender: gender,
@@ -145,11 +177,11 @@ export class UserService {
         where: {
           id: id,
         },
-        data: user,
+        data: updatedUser,
       });
       return {
         status: 200,
-        data: user,
+        data: updatedUser,
       };
     } catch (error) {
       return {

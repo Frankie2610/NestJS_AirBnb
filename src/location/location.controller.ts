@@ -8,12 +8,15 @@ import {
   Delete,
   Res,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { LocationService } from './location.service';
 import { ApiTags } from '@nestjs/swagger';
 import { LocationDto } from './dto/location.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('ViTri')
+@UseGuards(AuthGuard('jwt'))
 @Controller('vi-tri')
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
