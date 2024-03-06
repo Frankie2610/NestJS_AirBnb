@@ -11,10 +11,8 @@ export class CloudinaryService {
           reject(error);
         }
         resolver(result);
-        return result.url;
       });
       toStream(file.buffer).pipe(upload);
-      // console.log(upload);
     });
   }
 }

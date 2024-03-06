@@ -10,17 +10,25 @@ import {
   Put,
   Query,
   UseGuards,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomDto } from './dto/room.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @ApiTags('Phong')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 @Controller('phong-thue')
 export class RoomController {
-  constructor(private readonly roomService: RoomService) {}
+  constructor(
+    private readonly roomService: RoomService,
+    private cloudinaryService: CloudinaryService,
+  ) {}
 
   // tạo phòng thuê
   @Post()
@@ -80,5 +88,27 @@ export class RoomController {
   async deleteRoom(@Param('id') id: string, @Res() res): Promise<any> {
     const data = await this.roomService.deleteRoom(+id);
     res.status(data.status).json(data);
+  }
+
+  //upload hình phòng
+  @Post('/upload-hinh-phong')
+  @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: 'File to upload',
+    type: 'multipart/form-data',
+    required: true,
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  uploadImage(@UploadedFile() file: Express.Multer.File) {
+    return this.cloudinaryService.uploadImage(file);
   }
 }

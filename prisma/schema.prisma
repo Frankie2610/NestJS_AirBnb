@@ -31,8 +31,8 @@ model DatPhong {
   Phong          Phong?     @relation(fields: [ma_phong], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "DatPhong_ibfk_1")
   NguoiDung      NguoiDung? @relation(fields: [ma_nguoi_dat], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "DatPhong_ibfk_2")
 
-  @@index([ma_phong], map: "ma_phong")
   @@index([ma_nguoi_dat], map: "ma_nguoi_dat")
+  @@index([ma_phong], map: "ma_phong")
 }
 
 model NguoiDung {

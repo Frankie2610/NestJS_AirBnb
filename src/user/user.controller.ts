@@ -21,6 +21,7 @@ import {
   ApiBody,
   ApiConsumes,
   ApiParam,
+  ApiProperty,
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
@@ -126,6 +127,7 @@ export class UserController {
       },
     },
   })
+  @ApiProperty({ type: 'string', format: 'binary' })
   uploadImage(@UploadedFile() file: Express.Multer.File) {
     return this.cloudinaryService.uploadImage(file);
   }
