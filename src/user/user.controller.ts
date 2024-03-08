@@ -40,7 +40,7 @@ export class UserController {
   ) {}
 
   // tạo mới user
-  @Post('/add-user')
+  @Post()
   async addUser(
     @Body() userDto: UserDto,
     @Res() res,
@@ -103,7 +103,6 @@ export class UserController {
     @Res() res,
     @Req() req,
   ): Promise<any> {
-    // console.log(req.user);
     const userId = req.user.id;
     const data = await this.userService.updateUser(+id, userDto, +userId);
     await res.status(data.status).json(data);

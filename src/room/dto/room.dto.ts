@@ -2,6 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class RoomDto {
   @ApiProperty()
+  maViTri: number;
+  @ApiProperty()
   tenPhong: string;
   @ApiProperty()
   khach: number;

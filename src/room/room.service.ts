@@ -9,6 +9,7 @@ export class RoomService {
   async createRoom(roomDto: RoomDto): Promise<any> {
     try {
       const {
+        maViTri,
         tenPhong,
         khach,
         phongNgu,
@@ -28,6 +29,7 @@ export class RoomService {
         hinhAnh,
       } = roomDto;
       const newRoom = {
+        ma_vi_tri: maViTri,
         ten_phong: tenPhong,
         khach: khach,
         phong_ngu: phongNgu,
@@ -101,9 +103,18 @@ export class RoomService {
     }
   }
 
-  async updateRoom(id: number, roomDto: RoomDto): Promise<any> {
+  async updateRoom(id: number, roomDto: RoomDto, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const {
+        maViTri,
         tenPhong,
         khach,
         phongNgu,
@@ -123,6 +134,7 @@ export class RoomService {
         hinhAnh,
       } = roomDto;
       const updatedRoom = {
+        ma_vi_tri: maViTri,
         ten_phong: tenPhong,
         khach: khach,
         phong_ngu: phongNgu,
@@ -159,8 +171,16 @@ export class RoomService {
     }
   }
 
-  async deleteRoom(id: number): Promise<any> {
+  async deleteRoom(id: number, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const deletedRoom = await this.prisma.phong.delete({
         where: {
           id: id,

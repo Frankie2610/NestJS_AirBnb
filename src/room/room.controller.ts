@@ -12,6 +12,7 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
+  Req,
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomDto } from './dto/room.dto';
@@ -68,8 +69,9 @@ export class RoomController {
     @Param('id') id: number,
     @Body() roomDto: RoomDto,
     @Res() res,
+    @Req() req,
   ): Promise<any> {
-    const data = await this.roomService.updateRoom(+id, roomDto);
+    const data = await this.roomService.updateRoom(+id, roomDto, req);
     res.status(data.status).json(data);
   }
 
@@ -85,8 +87,12 @@ export class RoomController {
 
   // delete phòng thuê
   @Delete(':id')
-  async deleteRoom(@Param('id') id: string, @Res() res): Promise<any> {
-    const data = await this.roomService.deleteRoom(+id);
+  async deleteRoom(
+    @Param('id') id: string,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const data = await this.roomService.deleteRoom(+id, req);
     res.status(data.status).json(data);
   }
 
