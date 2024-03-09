@@ -11,6 +11,7 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
+  Req,
 } from '@nestjs/common';
 import { LocationService } from './location.service';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
@@ -41,8 +42,9 @@ export class LocationController {
   async addLocation(
     @Body() locationDto: LocationDto,
     @Res() res,
+    @Req() req,
   ): Promise<any> {
-    const data = await this.locationService.addLocation(locationDto);
+    const data = await this.locationService.addLocation(locationDto, req);
     res.status(data.status).json(data);
   }
 
@@ -69,14 +71,23 @@ export class LocationController {
     @Param('id') id: string,
     @Body() locationDto: LocationDto,
     @Res() res,
+    @Req() req,
   ): Promise<any> {
-    const data = await this.locationService.updateLocation(+id, locationDto);
+    const data = await this.locationService.updateLocation(
+      +id,
+      locationDto,
+      req,
+    );
     res.status(data.status).json(data);
   }
 
   @Delete(':id')
-  async deleteLocation(@Param('id') id: number, @Res() res): Promise<any> {
-    const data = await this.locationService.deleteLocation(+id);
+  async deleteLocation(
+    @Param('id') id: number,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const data = await this.locationService.deleteLocation(+id, req);
     res.status(data.status).json(data);
   }
 
@@ -98,7 +109,15 @@ export class LocationController {
       },
     },
   })
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
+  uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req) {
+    const role = req.user.role;
+    // kiểm tra xem có phải admin không?
+    if (role !== 'admin' && role !== 'Admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!',
+      };
+    }
     return this.cloudinaryService.uploadImage(file);
   }
 }

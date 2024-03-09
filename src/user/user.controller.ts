@@ -46,8 +46,7 @@ export class UserController {
     @Res() res,
     @Req() req,
   ): Promise<any> {
-    const role = req.user.role;
-    const data = await this.userService.addUser(userDto, role);
+    const data = await this.userService.addUser(userDto, req);
     res.status(data.status).json(data);
   }
 
@@ -90,8 +89,12 @@ export class UserController {
 
   // xóa user theo id
   @Delete(':id')
-  async deleteUser(@Param('id') id: number, @Res() res): Promise<any> {
-    const data = await this.userService.deleteUser(+id);
+  async deleteUser(
+    @Param('id') id: number,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const data = await this.userService.deleteUser(+id, req);
     await res.status(data.status).json(data);
   }
 
@@ -127,7 +130,15 @@ export class UserController {
     },
   })
   @ApiProperty({ type: 'string', format: 'binary' })
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
+  uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req) {
+    const role = req.user.role;
+    // kiểm tra xem có phải admin không?
+    if (role !== 'admin' && role !== 'Admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!',
+      };
+    }
     return this.cloudinaryService.uploadImage(file);
   }
 }

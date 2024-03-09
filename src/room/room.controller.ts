@@ -33,8 +33,12 @@ export class RoomController {
 
   // tạo phòng thuê
   @Post()
-  async createRoom(@Body() roomDto: RoomDto, @Res() res): Promise<any> {
-    const data = await this.roomService.createRoom(roomDto);
+  async createRoom(
+    @Body() roomDto: RoomDto,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const data = await this.roomService.createRoom(roomDto, req);
     res.status(data.status).json(data);
   }
 
@@ -114,7 +118,15 @@ export class RoomController {
       },
     },
   })
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
+  uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req) {
+    const role = req.user.role;
+    // kiểm tra xem có phải admin không?
+    if (role !== 'admin' && role !== 'Admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!',
+      };
+    }
     return this.cloudinaryService.uploadImage(file);
   }
 }

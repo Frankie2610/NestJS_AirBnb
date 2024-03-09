@@ -21,8 +21,16 @@ export class LocationService {
     }
   }
 
-  async addLocation(locationDto: LocationDto): Promise<any> {
+  async addLocation(locationDto: LocationDto, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const { tenViTri, tinhThanh, quocGia, hinhAnh } = locationDto;
       const newLocation = {
         ten_vi_tri: tenViTri,
@@ -85,8 +93,20 @@ export class LocationService {
     }
   }
 
-  async updateLocation(id: number, locationDto: LocationDto): Promise<any> {
+  async updateLocation(
+    id: number,
+    locationDto: LocationDto,
+    req: any,
+  ): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const { tenViTri, tinhThanh, quocGia, hinhAnh } = locationDto;
       const updatedLocation = {
         ten_vi_tri: tenViTri,
@@ -112,8 +132,16 @@ export class LocationService {
     }
   }
 
-  async deleteLocation(id: number): Promise<any> {
+  async deleteLocation(id: number, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const deletedLocation = await this.prisma.viTri.delete({
         where: {
           id: id,

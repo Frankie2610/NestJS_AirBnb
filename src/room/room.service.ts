@@ -6,8 +6,16 @@ import { PrismaClient } from '@prisma/client';
 export class RoomService {
   prisma = new PrismaClient();
 
-  async createRoom(roomDto: RoomDto): Promise<any> {
+  async createRoom(roomDto: RoomDto, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const {
         maViTri,
         tenPhong,

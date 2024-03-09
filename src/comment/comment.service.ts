@@ -6,7 +6,15 @@ import { PrismaClient } from '@prisma/client';
 export class CommentService {
   prisma = new PrismaClient();
 
-  async createComment(commentDto: CommentDto): Promise<any> {
+  async createComment(commentDto: CommentDto, req: any): Promise<any> {
+    const role = req.user.role;
+    // kiểm tra xem có phải admin không?
+    if (role !== 'admin' && role !== 'Admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!',
+      };
+    }
     try {
       const { maPhong, maNguoiBinhLuan, ngayBinhLuan, noiDung, saoBinhLuan } =
         commentDto;
@@ -67,7 +75,15 @@ export class CommentService {
     }
   }
 
-  async updateComment(id: number, commentDto: CommentDto) {
+  async updateComment(id: number, commentDto: CommentDto, req: any) {
+    const role = req.user.role;
+    // kiểm tra xem có phải admin không?
+    if (role !== 'admin' && role !== 'Admin') {
+      return {
+        status: 400,
+        message: 'Unauthorized!',
+      };
+    }
     try {
       const { maPhong, maNguoiBinhLuan, ngayBinhLuan, noiDung, saoBinhLuan } =
         commentDto;
@@ -97,8 +113,16 @@ export class CommentService {
     }
   }
 
-  async deleteComment(id: number): Promise<any> {
+  async deleteComment(id: number, req: any): Promise<any> {
     try {
+      const role = req.user.role;
+      // kiểm tra xem có phải admin không?
+      if (role !== 'admin' && role !== 'Admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!',
+        };
+      }
       const isComment = await this.prisma.binhLuan.findUnique({
         where: {
           id: id,

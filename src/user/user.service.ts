@@ -8,8 +8,9 @@ import * as bcrypt from 'bcrypt';
 export class UserService {
   prisma = new PrismaClient();
 
-  async addUser(userDto: UserDto, role: string): Promise<any> {
+  async addUser(userDto: UserDto, req: any): Promise<any> {
     const BCRYPT_FACTOR = 10;
+    const { role } = req.user;
     if (role !== 'Admin' && role !== 'admin') {
       return {
         status: 400,
@@ -118,8 +119,15 @@ export class UserService {
     }
   }
 
-  async deleteUser(id: number): Promise<any> {
+  async deleteUser(id: number, req: any): Promise<any> {
     try {
+      const { role } = req.user;
+      if (role !== 'Admin' && role !== 'admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!!',
+        };
+      }
       const deletedComment = await this.prisma.binhLuan.deleteMany({
         where: {
           ma_nguoi_binh_luan: id,

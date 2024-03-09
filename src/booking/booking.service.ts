@@ -6,16 +6,16 @@ import { PrismaClient } from '@prisma/client';
 export class BookingService {
   prisma = new PrismaClient();
 
-  async makeBooking(bookingDto: BookingDto): Promise<any> {
+  async makeBooking(bookingDto: BookingDto, req): Promise<any> {
     try {
-      const { maPhong, ngayDen, ngayDi, soLuongKhach, maNguoiDung } =
-        bookingDto;
+      const userId = +req.user.id;
+      const { maPhong, ngayDen, ngayDi, soLuongKhach } = bookingDto;
       const newBooking = {
         ma_phong: maPhong,
         ngay_den: ngayDen,
         ngay_di: ngayDi,
         so_luong_khach: soLuongKhach,
-        ma_nguoi_dat: maNguoiDung,
+        ma_nguoi_dat: userId,
       };
 
       // kiểm tra phòng user book có tồn tại hay không?
@@ -100,16 +100,28 @@ export class BookingService {
     }
   }
 
-  async updateBooking(id: number, bookingDto: BookingDto) {
+  async updateBooking(id: number, bookingDto: BookingDto, req: any) {
     try {
-      const { maPhong, ngayDen, ngayDi, soLuongKhach, maNguoiDung } =
-        bookingDto;
+      const userId = +req.user.id;
+      const booking = await this.prisma.datPhong.findFirst({
+        where: {
+          id: +id,
+        },
+      });
+      //Kiểm tra user muốn update booking có phải là user tạo booking không?
+      if (userId !== booking.ma_nguoi_dat) {
+        return {
+          status: 400,
+          message: 'Unauthorized!!',
+        };
+      }
+      const { maPhong, ngayDen, ngayDi, soLuongKhach } = bookingDto;
       const updatedBooking = {
         ma_phong: maPhong,
         ngay_den: ngayDen,
         ngay_di: ngayDi,
         so_luong_khach: soLuongKhach,
-        ma_nguoi_dat: maNguoiDung,
+        ma_nguoi_dat: userId,
       };
       await this.prisma.datPhong.update({
         where: {

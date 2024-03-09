@@ -9,13 +9,15 @@ import {
   Res,
   Put,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import { BookingDto } from './dto/booking.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('DatPhong')
+@ApiBearerAuth()
 @UseGuards(AuthGuard('jwt'))
 @Controller('dat-phong')
 export class BookingController {
@@ -47,8 +49,12 @@ export class BookingController {
 
   // tạo booking
   @Post()
-  async makeBooking(@Body() bookingDto: BookingDto, @Res() res): Promise<any> {
-    const data = await this.bookingService.makeBooking(bookingDto);
+  async makeBooking(
+    @Body() bookingDto: BookingDto,
+    @Res() res,
+    @Req() req,
+  ): Promise<any> {
+    const data = await this.bookingService.makeBooking(bookingDto, req);
     res.status(data.status).json(data);
   }
 
@@ -58,8 +64,9 @@ export class BookingController {
     @Param('id') id: number,
     @Body() bookingDto: BookingDto,
     @Res() res,
+    @Req() req,
   ): Promise<any> {
-    const data = await this.bookingService.updateBooking(+id, bookingDto);
+    const data = await this.bookingService.updateBooking(+id, bookingDto, req);
     res.status(data.status).json(data);
   }
 
