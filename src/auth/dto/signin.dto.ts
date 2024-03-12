@@ -4,5 +4,5 @@ export default class SigninDto {
   @ApiProperty()
   email: string;
   @ApiProperty()
-  pass_word: string;
+  password: string;
 }

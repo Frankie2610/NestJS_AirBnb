@@ -56,14 +56,14 @@ export class AuthService {
 
   async signin(body: SigninDto): Promise<any> {
     try {
-      const { email, pass_word } = body;
+      const { email, password } = body;
       const isUser = await this.prisma.nguoiDung.findFirst({
         where: {
           email: email,
         },
       });
       if (isUser) {
-        const isPassword = bcrypt.compareSync(pass_word, isUser.pass_word);
+        const isPassword = bcrypt.compareSync(password, isUser.pass_word);
         if (isPassword) {
           const payload = {
             id: isUser.id,
