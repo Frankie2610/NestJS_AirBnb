@@ -23,6 +23,13 @@ import { AuthGuard } from '@nestjs/passport';
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
+  // Lấy danh sách bình luận
+  @Get()
+  async getCommentList(@Res() res): Promise<any> {
+    const data = await this.commentService.getCommentList();
+    res.status(data.status).json(data);
+  }
+
   // tạo mới bình luận
   @Post()
   async createComment(
@@ -31,23 +38,6 @@ export class CommentController {
     @Req() req,
   ): Promise<any> {
     const data = await this.commentService.createComment(commentDto, req);
-    res.status(data.status).json(data);
-  }
-
-  // Lấy danh sách bình luận
-  @Get()
-  async getCommentList(@Res() res): Promise<any> {
-    const data = await this.commentService.getCommentList();
-    res.status(data.status).json(data);
-  }
-
-  // Lấy bình luận theo mã phòng
-  @Get('/lay-binh-luan-theo-phong/:maPhong')
-  async getComment(
-    @Param('maPhong') maPhong: number,
-    @Res() res,
-  ): Promise<any> {
-    const data = await this.commentService.getComment(+maPhong);
     res.status(data.status).json(data);
   }
 
@@ -71,6 +61,16 @@ export class CommentController {
     @Req() req,
   ): Promise<any> {
     const data = await this.commentService.deleteComment(+id, req);
+    res.status(data.status).json(data);
+  }
+
+  // Lấy bình luận theo mã phòng
+  @Get('/lay-binh-luan-theo-phong/:maPhong')
+  async getComment(
+    @Param('maPhong') maPhong: number,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.commentService.getComment(+maPhong);
     res.status(data.status).json(data);
   }
 }

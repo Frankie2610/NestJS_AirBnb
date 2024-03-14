@@ -53,12 +53,21 @@ export class LocationService {
     }
   }
 
-  async getPaginationList(page: number, size: number): Promise<any> {
+  async getPaginationList(
+    page: number,
+    size: number,
+    keyword: string,
+  ): Promise<any> {
     const numPage = Number(page);
     const numSize = Number(size);
     const skip = (numPage - 1) * numSize;
     try {
       const paginationList = await this.prisma.viTri.findMany({
+        where: {
+          ten_vi_tri: {
+            contains: keyword,
+          },
+        },
         skip: skip,
         take: numSize,
       });

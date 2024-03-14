@@ -12,9 +12,17 @@ import {
   UseInterceptors,
   UploadedFile,
   Req,
+  Query,
 } from '@nestjs/common';
 import { LocationService } from './location.service';
-import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiParam,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { LocationDto } from './dto/location.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -48,20 +56,29 @@ export class LocationController {
     res.status(data.status).json(data);
   }
 
+  // phân trang tìm kiếm
+  @ApiParam({ name: 'page' })
+  @ApiParam({ name: 'size' })
+  @ApiQuery({ name: 'keyword', required: false })
+  @Get('/phan-trang-tim-kiem/:page/:size')
+  async getPaginationList(
+    @Param('page') page: number,
+    @Param('size') size: number,
+    @Query('keyword') keyword: string,
+    @Res() res,
+  ) {
+    const data = await this.locationService.getPaginationList(
+      page,
+      size,
+      keyword,
+    );
+    res.status(data.status).json(data);
+  }
+
   // tìm vị trí theo id
   @Get(':id')
   async getLocation(@Param('id') id: number, @Res() res) {
     const data = await this.locationService.getLocation(+id);
-    res.status(data.status).json(data);
-  }
-
-  @Get('phan-trang-tim-kiem/:page/:size')
-  async getPaginationList(
-    @Param('page') page: number,
-    @Param('size') size: number,
-    @Res() res,
-  ) {
-    const data = await this.locationService.getPaginationList(page, size);
     res.status(data.status).json(data);
   }
 

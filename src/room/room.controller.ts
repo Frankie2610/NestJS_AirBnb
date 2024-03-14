@@ -19,6 +19,7 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiConsumes,
+  ApiParam,
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
@@ -27,14 +28,21 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @ApiTags('Phong')
-// @ApiBearerAuth()
-// @UseGuards(AuthGuard('jwt'))
+@ApiBearerAuth()
+@UseGuards(AuthGuard('jwt'))
 @Controller('phong-thue')
 export class RoomController {
   constructor(
     private readonly roomService: RoomService,
     private cloudinaryService: CloudinaryService,
   ) {}
+
+  // lấy danh sách phòng
+  @Get()
+  async getRoomList(@Res() res): Promise<any> {
+    const data = await this.roomService.getRoomList();
+    res.status(data.status).json(data);
+  }
 
   // tạo phòng thuê
   @Post()
@@ -47,10 +55,29 @@ export class RoomController {
     res.status(data.status).json(data);
   }
 
-  // lấy danh sách phòng
-  @Get()
-  async getRoomList(@Res() res): Promise<any> {
-    const data = await this.roomService.getRoomList();
+  // lấy phòng theo vị trí
+  @ApiQuery({ name: 'maViTri' })
+  @Get('/lay-phong-theo-vi-tri')
+  async getRoomBaseOnLocation(
+    @Query('maViTri') id: number,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.roomService.getRoomBaseOnLocation(+id);
+    res.status(data.status).json(data);
+  }
+
+  // lấy danh sách phòng phân trang tìm kiếm
+  @ApiParam({ name: 'page' })
+  @ApiParam({ name: 'size' })
+  @ApiQuery({ name: 'keyword', required: false })
+  @Get('/phan-trang-tim-kiem/:page/:size')
+  async getPaginationList(
+    @Param('page') page: number,
+    @Param('size') size: number,
+    @Query('keyword') keyword: string,
+    @Res() res,
+  ): Promise<any> {
+    const data = await this.roomService.getPaginationList(page, size, keyword);
     res.status(data.status).json(data);
   }
 
@@ -58,27 +85,6 @@ export class RoomController {
   @Get(':id')
   async getRoom(@Param('id') id: number, @Res() res): Promise<any> {
     const data = await this.roomService.getRoom(+id);
-    res.status(data.status).json(data);
-  }
-
-  // lấy danh sách phòng phân trang tìm kiếm
-  // @ApiQuery({ name: 'page' })
-  // @ApiQuery({ name: 'size' })
-  // @ApiQuery({ name: 'keyword', required: false })
-  @Get('/phan-trang-tim-kiem')
-  async getPaginationList(
-    @Query('page') page: number,
-    @Query('size') size: number,
-    @Query('keyword') keyword: string,
-    @Res() res,
-  ): Promise<any> {
-    console.log('ok');
-
-    const data = await this.roomService.getPaginationList(
-      +page,
-      +size,
-      keyword,
-    );
     res.status(data.status).json(data);
   }
 
@@ -91,16 +97,6 @@ export class RoomController {
     @Req() req,
   ): Promise<any> {
     const data = await this.roomService.updateRoom(+id, roomDto, req);
-    res.status(data.status).json(data);
-  }
-
-  // lấy phòng theo vị trí
-  @Get('/lay-phong-theo-vi-tri/:maViTri')
-  async getRoomBaseOnLocation(
-    @Param('maViTri') id: number,
-    @Res() res,
-  ): Promise<any> {
-    const data = await this.roomService.getRoomBaseOnLocation(id);
     res.status(data.status).json(data);
   }
 
