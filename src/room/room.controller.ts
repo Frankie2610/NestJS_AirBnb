@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Res,
@@ -16,14 +15,20 @@ import {
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomDto } from './dto/room.dto';
-import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @ApiTags('Phong')
-@ApiBearerAuth()
-@UseGuards(AuthGuard('jwt'))
+// @ApiBearerAuth()
+// @UseGuards(AuthGuard('jwt'))
 @Controller('phong-thue')
 export class RoomController {
   constructor(
@@ -57,13 +62,23 @@ export class RoomController {
   }
 
   // lấy danh sách phòng phân trang tìm kiếm
-  @Get('/phan-trang-tim-kiem/:page/:size')
+  // @ApiQuery({ name: 'page' })
+  // @ApiQuery({ name: 'size' })
+  // @ApiQuery({ name: 'keyword', required: false })
+  @Get('/phan-trang-tim-kiem')
   async getPaginationList(
-    @Param('page') page: number,
-    @Param('size') size: number,
+    @Query('page') page: number,
+    @Query('size') size: number,
+    @Query('keyword') keyword: string,
     @Res() res,
   ): Promise<any> {
-    const data = await this.roomService.getPaginationList(page, size);
+    console.log('ok');
+
+    const data = await this.roomService.getPaginationList(
+      +page,
+      +size,
+      keyword,
+    );
     res.status(data.status).json(data);
   }
 

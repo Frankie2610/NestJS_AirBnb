@@ -1,6 +1,5 @@
-import { Injectable, Req } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserDto } from './dto/user.dto';
-// import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { UpdatedUserDto } from './dto/updatedUser.dto';
@@ -104,6 +103,7 @@ export class UserService {
     try {
       const numPage = Number(page);
       const numSize = Number(size);
+
       const skip = (numPage - 1) * numSize;
       const data = await this.prisma.nguoiDung.findMany({
         skip: skip,
@@ -132,11 +132,11 @@ export class UserService {
         };
       }
       // kiểm tra tài khoản muốn xóa có phải của user đang singin không?
-      const userId = req.user.id;
+      const userId = +req.user.id;
       if (id !== userId) {
         return {
           status: 400,
-          message: 'Unauthorized!!',
+          message: 'Unauthorized!!!',
         };
       }
       const deletedComment = await this.prisma.binhLuan.deleteMany({

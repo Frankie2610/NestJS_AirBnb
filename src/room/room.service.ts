@@ -206,12 +206,20 @@ export class RoomService {
     }
   }
 
-  async getPaginationList(page, size): Promise<any> {
+  async getPaginationList(page, size, keyword): Promise<any> {
+    console.log(page, size, keyword);
     try {
       const numPage = Number(page);
       const numSize = Number(size);
       const skip = (numPage - 1) * numSize;
+      console.log(numPage, numSize);
+
       const roomList = await this.prisma.phong.findMany({
+        // where: {
+        //   ten_phong: {
+        //     contains: keyword,
+        //   },
+        // },
         skip: skip,
         take: numSize,
       });
@@ -220,6 +228,7 @@ export class RoomService {
         data: roomList,
       };
     } catch (error) {
+      console.error(error.message);
       return {
         status: 500,
         message: error,
