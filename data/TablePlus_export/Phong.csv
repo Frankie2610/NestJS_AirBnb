@@ -1,0 +1,17 @@
+id,ma_vi_tri,ten_phong,khach,phong_ngu,giuong,phong_tam,mo_ta,gia_tien,may_giat,ban_la,tivi,dieu_hoa,wifi,bep,do_xe,ho_boi,ban_ui,hinh_anh
+1,1,2222Moutainous View Suite,1,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+2,2,string,0,0,0,0,string,0,1,1,1,1,1,1,1,1,1,string
+3,3,Phòng Family,4,2,2,2,Lý tưởng cho kỳ nghỉ gia đình,2000000,1,1,1,1,1,1,1,1,1,images/family_room.jpg
+4,4,Studio,2,1,1,1,Căn hộ studio với đầy đủ tiện nghi,1300000,1,1,1,1,1,1,1,0,0,images/studio.jpg
+5,5,Penthouse,5,3,3,2,Penthouse sang trọng với tầm nhìn tuyệt vời,5000000,1,1,1,1,1,1,1,1,1,images/penthouse.jpg
+6,6,Phòng Double,2,1,1,1,Phòng ngủ tiện nghi cho hai người,800000,0,0,1,1,1,0,0,0,0,images/double_room.jpg
+7,7,Bungalow,2,1,1,1,"Bungalow gần biển, không gian yên bình",2500000,0,0,1,1,1,1,1,1,0,images/bungalow.jpg
+8,8,Phòng Single,1,1,1,1,"Phòng cá nhân nhỏ gọn, tiện nghi",600000,0,0,1,1,1,0,0,0,0,images/single_room.jpg
+9,9,Căn hộ Dịch vụ,3,2,2,2,Căn hộ dịch vụ đầy đủ tiện ích cho cả gia đình,3000000,1,1,1,1,1,1,1,1,1,images/service_apartment.jpg
+10,10,Villa Biển,6,3,4,3,Villa sang trọng bên bờ biển với hồ bơi riêng,7000000,1,1,1,1,1,1,1,1,1,images/beach_villa.jpg
+11,,Phòng Deluxe,4,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+12,,Phòng Deluxe,4,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+13,,Phòng Deluxe,4,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+14,,Phòng Deluxe,4,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+16,,Phòng Deluxe,4,1,2,1,"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.",1000,1,1,1,1,1,1,1,1,1,https://example.com/images/ocean-view-suite.jpg
+21,1,tr,0,0,0,0,xcx,0,1,1,1,1,1,1,1,1,1,cx

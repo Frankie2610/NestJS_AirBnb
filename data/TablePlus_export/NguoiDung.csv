@@ -1,0 +1,38 @@
+id,name,email,pass_word,phone,birth_day,gender,role
+1,Nguyen Van A,nguyenvana@example.com,$2b$10$rt3rh8NFrlKkO.WL3ucCqOONzhSjJK0NoxsG2u4SdvZaN9iwc9Mo.,0123456789,1990-01-01,Male,User
+2,Tran Thi B,tranthib@example.com,password123,0123456781,1991-02-02,Female,User
+3,Le Van C,levanc@example.com,password123,0123456782,1992-03-03,Male,User
+4,Pham Thi D,phamthid@example.com,password123,0123456783,1993-04-04,Female,Admin
+5,Hoang Van E,hoangvane@example.com,password123,0123456784,1994-05-05,Male,User
+6,Vu Thi F,vuthif@example.com,password123,0123456785,1995-06-06,Female,User
+7,Dang Van G,dangvang@example.com,password123,0123456786,1996-07-07,Male,User
+8,Bui Thi H,buithih@example.com,password123,0123456787,1997-08-08,Female,Admin
+9,Do Van I,dovani@example.com,password123,0123456788,1998-09-09,Male,User
+10,Luong Thi J,luongthij@example.com,password123,0123456789,1999-10-10,Female,User
+11,Nguyen Van K,nguyenvank@example.com,password123,0123456790,2000-11-11,Male,User
+12,Tran Thi L,tranthil@example.com,password123,0123456791,2001-12-12,Female,Admin
+13,Le Van M,levanm@example.com,password123,0123456792,2002-01-13,Male,User
+14,Pham Thi N,phamthin@example.com,password123,0123456793,2003-02-14,Female,User
+16,Vu Thi P,vuthip@example.com,password123,0123456795,2005-04-16,Female,Admin
+18,Bui Thi R,buithir@example.com,password123,0123456797,2007-06-18,Female,User
+19,Do Van S,dovans@example.com,password123,0123456798,2008-07-19,Male,User
+20,Luong Thi T,luongthit@example.com,password123,0123456799,2009-08-20,Female,Admin
+21,Văn Gia Quyền,giaquyenvan@gmail.com,$2b$10$aVTa//HdWf6r4tAbMft5w.nx9GtQudXEj18XJGZo/Uhp6zQx3GHtq,0933882845,26/10/1999,Male,Admin
+23,Hoàng Mỹ Tâm,hoangan@gmail.com,1234,0933882296,1996-10-10,Male,Admin
+25,Hoàng Mỹ Tâm An,hoangan@gmail.com,$2b$10$qBlONUMTegjLPXXuKLnsnenrZHMaldK6sHL.cAGrhKajqYi3hq7MG,0933882296,1996-10-10,Male,Admin
+30,Thanh Trúc,thanhtruc@gmail.com,$2b$10$c51S.i858tofu1eQRGQn3uPbFomKV3od8cuK9DeUPps.ixG9cesUK,0902932808,2004-10-10,Female,Admin
+31,Thanh Trúc,thanhtruc12@gmail.com,$2b$10$A9pL.1GKWktyR0Ts2BDWJOKrkTub/M4ZSm/e52ltmPJy9aySND/jW,0902932808,2004-10-10,Female,Admin
+32,Thanh Trúc,thanhtruc122@gmail.com,$2b$10$Gtpdke1zaqFNfy5P5xqxwesPqHMJv9UIV92BhR2xwJ2nj7tCFz3bO,0902932808,2004-10-10,Female,Admin
+33,Thanh Trúc,thanhtruc1ewe22@gmail.com,$2b$10$499OpMVYTqyqGLY/VzkudubmHC1A8Q9jKTefuZdk0X0FEpBoyOsnW,0902932808,2004-10-10,Female,Admin
+34,Thanh Trúc,thanhtruc1ewsdsde22@gmail.com,$2b$10$TNBivRml0MOjheCh0vSj0e/1Np1sddZGsW9W4FqncvIdOJ0zSSdK6,0902932808,2004-10-10,Female,Admin
+35,Thanh Trúc,thanhtruc1ewsdsdsdsde22@gmail.com,$2b$10$RB63e5QLYxy4YCEhe7skKOj12y8KK9aqbQJXy1Yy8x2H1cTli/LIS,0902932808,2004-10-10,Female,Admin
+36,Thanh Trúc,thanhtruc1ewsdsdsdsdsddsde22@gmail.com,$2b$10$1KxBKFzpbXnnzpXIcwzbIuWLXP5KB7O9a/DR7igBxGmUus1C2div.,0902932808,2004-10-10,Female,Admin
+37,Văn Gia Thịnh,thinhvan2000@gmail.com,$2b$10$LGsIApHp1mzZ2pO8FWqHnuVlfaq8to2AcxnzGek5YGTLOCJBsGo0W,0933882845,26/10/1999,Male,Admin
+38,Văn Gia Huy,huyvan95@gmail.com,$2b$10$Pxd1Ih77n/bld5mTk/rt3.g8cgAj0fD5n9yVOiUsvl8zE6.uLk9B.,0933882845,26/10/1999,Male,Admin
+39,Thanh Trúc,thanhtruc1ewsdsdsdsdfdfdfsddsde22@gmail.com,$2b$10$Ce6AIlvKSHhyMDe3317QrOsspQWABOrzewR1aEKerdW7XMQj88Hku,0902932808,2004-10-10,Female,Admin
+40,Nguyễn Thịnh,thinhnguyen@gmail.com,$2b$10$zfaVELyXiN3b1IDNrXDe9O9iUULphwECAh5nPHIkvmdujgz0HhIdi,0933882845,26/10/1999,Male,user
+41,Thanh Trúc,thanhtsdsdruc1ewsdsdsdsdfdfdfsddsde22@gmail.com,$2b$10$SlrI7SIOYKSThYzc.r8NkOP61cG1iDEUVfBdULj6wtu0PioVqjrU2,0902932808,2004-10-10,Female,Admin
+42,Thanh Trúc,thanhtsdsdruc1ewsdsdsdsdfdfdfhjhsddsde22@gmail.com,$2b$10$le5KByXRYdOUZFhj3hUVW.bpXU4c8.ZRKe7qExu/Q9FuFCoR4l5D.,0902932808,2004-10-10,Female,Admin
+46,QUyền,giaquyenvan96@gmail.com,$2b$10$9PcyyIxzFWVKNRxpsfH3GeXvcYgeeOjaUaDnLv6qaA4lqFvKdmhEe,0933882896,12345,male,user
+47,Ngọc Hoa,hoaluu2002@gmail.com,$2b$10$.9FndhQWcOkYbE.WkkZtbeMYuHh/tD5TMKxSLpG81bNzUyl6o21kW,0933882854,26102002,female,user
+48,thịnhtang,thinhnguyen12444@gmail.com,$2b$10$ujl5TUGwZccWxL0VQ5ahWetxj.t.zfHqkZ98IsAxFWFNEWIKJbKUe,0933882895,26/10/99,male,user

@@ -1,0 +1,12 @@
+id,ten_vi_tri,tinh_thanh,quoc_gia,hinh_anh
+1,Quận 1,Hồ Chí Minh,Việt Nam,images/quan1_hcm.jpg
+2,Quận 3,Hồ Chí Minh,Việt Nam,images/quan3_hcm.jpg
+3,Ba Đình,Hà Nội,Việt Nam,images/ba_dinh_hn.jpg
+4,Hoàn Kiếm,Hà Nội,Việt Nam,images/hoan_kiem_hn.jpg
+5,Hải Châu,Đà Nẵng,Việt Nam,images/hai_chau_dn.jpg
+6,Sơn Trà,Đà Nẵng,Việt Nam,images/son_tra_dn.jpg
+7,Ninh Hòa,Nha Trang,Việt Nam,images/ninh_hoa_nt.jpg
+8,Vĩnh Hải,Nha Trang,Việt Nam,images/vinh_hai_nt.jpg
+9,Huế,Thừa Thiên Huế,Việt Nam,images/hue_city.jpg
+10,Phú Hội,Huế,Việt Nam,images/phu_hoi_hue.jpg
+12,Thảo Điền,TpHCM,VietNam,/hinhAnh.img

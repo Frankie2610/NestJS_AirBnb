@@ -1,0 +1,1122 @@
+{
+	"info": {
+		"_postman_id": "bbbfa812-1aeb-4cd5-a991-ef598ab23d89",
+		"name": "Capstone_NestJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26018096"
+	},
+	"item": [
+		{
+			"name": "NguoiDung",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5MDQzNjkxLCJleHAiOjE4MDM3MTY0OTF9.mG46VqjcwDaoWT4xfHuXzPumGFcgLOUXR2l3qH5DZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5MDQzNjkxLCJleHAiOjE4MDM3MTY0OTF9.mG46VqjcwDaoWT4xfHuXzPumGFcgLOUXR2l3qH5DZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/search/{tenNguoiDung}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5MDQzNjkxLCJleHAiOjE4MDM3MTY0OTF9.mG46VqjcwDaoWT4xfHuXzPumGFcgLOUXR2l3qH5DZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "filter",
+								"value": "A",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/users/search/Nguyen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"search",
+								"Nguyen"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "Quyen",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/phan-trang-tim-kiem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA4OTU2NTY4LCJleHAiOjE4MDM2MjkzNjh9.lEM1aq07P4Mpz9Mx_FCvYv5ohAiqfGa-rMWqYIQuF1Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/users/phan-trang-tim-kiem?page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"phan-trang-tim-kiem"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MjAwMTUsImV4cCI6MTgwNDU5MjgxNX0.Vx2pDmZq0bXxQubyPIqMF7bkb1-aYpvRwmU4TX6OeVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5OTE1NjQ2LCJleHAiOjE4MDQ1ODg0NDZ9.IvKlX5yoF81_UW4OvRnXfjYwijXkAx1m2KgH1tSsXhY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Thanh Trúc\",\n    \"email\": \"thanhtruc1ewsdsdsdsdfdfdfsddsde22@gmail.com\",\n    \"pass_word\": \"1234\",\n    \"phone\": \"0902932808\",\n    \"birth_day\": \"2004-10-10\",\n    \"gender\": \"Female\",\n    \"role\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImVtYWlsIjoibXlxdXllbkBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MDkyODc2MzksImV4cCI6MTgwMzk2MDQzOX0.IxcHlwzKi3f3TE79qgf02wEMPNac9Q4t6JEdczdXGbI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hoàng Mỹ Tâm An\",\n    \"email\": \"hoangan@gmail.com\",\n    \"pass_word\": \"1234\",\n    \"phone\": \"0933882296\",\n    \"birth_day\": \"1996-10-10\",\n    \"gender\": \"Male\",\n    \"role\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/upload-avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImVtYWlsIjoibXlxdXllbkBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MDkyODc2MzksImV4cCI6MTgwMzk2MDQzOX0.IxcHlwzKi3f3TE79qgf02wEMPNac9Q4t6JEdczdXGbI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/vangiaquyen/Desktop/1617562068980.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/upload-avatar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"upload-avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Phong",
+			"item": [
+				{
+					"name": "phong-thue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MTczNzYsImV4cCI6MTgwNDU5MDE3Nn0.mAPi0HaXYGR2oFsMOKlanYJsSjrkVCmDbrWrPX0yg5Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"maViTri\": 15,\n    \"tenPhong\": \"Phòng Deluxe\",\n    \"khach\": 4,\n    \"phongNgu\": 1,\n    \"giuong\": 2,\n    \"phongTam\": 1,\n    \"moTa\": \"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.\",\n    \"giaTien\": 1000,\n    \"mayGiat\": true,\n    \"banLa\": true,\n    \"tivi\": true,\n    \"dieuHoa\": true,\n    \"wifi\": true,\n    \"bep\": true,\n    \"doXe\": true,\n    \"hoBoi\": true,\n    \"banUi\": true,\n    \"hinhAnh\": \"https://example.com/images/ocean-view-suite.jpg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/phong-thue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phong-thue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5OTIwMDIzLCJleHAiOjE4MDQ1OTI4MjN9.WJyOVHlN-cf4GMf8-EZNXHVRhPJZpwD4zj3Zcu3dQsU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tenPhong\": \"2222Moutainous View Suite\",\n    \"khach\": 1,\n    \"phongNgu\": 1,\n    \"giuong\": 2,\n    \"phongTam\": 1,\n    \"moTa\": \"A luxurious suite with an ocean view, equipped with modern amenities for a comfortable stay.\",\n    \"giaTien\": 1000,\n    \"mayGiat\": true,\n    \"banLa\": true,\n    \"tivi\": true,\n    \"dieuHoa\": true,\n    \"wifi\": true,\n    \"bep\": true,\n    \"doXe\": true,\n    \"hoBoi\": true,\n    \"banUi\": true,\n    \"hinhAnh\": \"https://example.com/images/ocean-view-suite.jpg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MjAwMTUsImV4cCI6MTgwNDU5MjgxNX0.Vx2pDmZq0bXxQubyPIqMF7bkb1-aYpvRwmU4TX6OeVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue/phan-trang-tim-kiem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImVtYWlsIjoiaHV5dmFuOTVAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzEwNDIyODcwLCJleHAiOjE4MDUwOTU2NzB9.Nq9S8nYn4TegXi0hJDVm_2k3goxmk_woZp_LEmEx21U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/phan-trang-tim-kiem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"phan-trang-tim-kiem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "phong-thue/lay-phong-theo-vi-tri",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "maViTri",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/lay-phong-theo-vi-tri/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"lay-phong-theo-vi-tri",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload-hinh-phong",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiaG9hbmdhbiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA5MzA3NDI1LCJleHAiOjE4MDM5ODAyMjV9.dhntjRMpUu-Ej1yUtFE7p_i08si4czd42qlXzmzzCvE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eeb38b5-b8a7-4250-bf2a-5ef893c4c5b0"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/phong-thue/upload-hinh-phong",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phong-thue",
+								"upload-hinh-phong"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ViTri",
+			"item": [
+				{
+					"name": "vi-tri",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5OTIwMDIzLCJleHAiOjE4MDQ1OTI4MjN9.WJyOVHlN-cf4GMf8-EZNXHVRhPJZpwD4zj3Zcu3dQsU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vi-tri",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"tenViTri\": \"Thảo Điền\",\n  \"tinhThanh\": \"TpHCM\",\n  \"quocGia\": \"VietNam\",\n  \"hinhAnh\": \"/hinhAnh.img\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vi-tri",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri/phan-trang-tim-kiem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vi-tri/phan-trang-tim-kiem/2/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri",
+								"phan-trang-tim-kiem",
+								"2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vi-tri/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tenViTri\": \"Thảo Điềnnn\",\n  \"tinhThanh\": \"TpHCM\",\n  \"quocGia\": \"VietNam\",\n  \"hinhAnh\": \"/hinhAnh.img\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vi-tri/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vi-tri/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vi-tri/upload-hinh-vitri",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiaG9hbmdhbiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA5MzA3NDI1LCJleHAiOjE4MDM5ODAyMjV9.dhntjRMpUu-Ej1yUtFE7p_i08si4czd42qlXzmzzCvE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eeb38b6-c76b-48d0-ac54-aa88a4c79951"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/vi-tri/upload-hinh-vitri",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vi-tri",
+								"upload-hinh-vitri"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DatPhong",
+			"item": [
+				{
+					"name": "dat-phong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/dat-phong",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dat-phong/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5OTIwMDIzLCJleHAiOjE4MDQ1OTI4MjN9.WJyOVHlN-cf4GMf8-EZNXHVRhPJZpwD4zj3Zcu3dQsU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/dat-phong/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dat-phong/lay-theo-nguoi-dung/{maNguoiDung}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/dat-phong/lay-theo-nguoi-dung/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong",
+								"lay-theo-nguoi-dung",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dat-phong",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MjAwMTUsImV4cCI6MTgwNDU5MjgxNX0.Vx2pDmZq0bXxQubyPIqMF7bkb1-aYpvRwmU4TX6OeVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maPhong\":16,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/dat-phong",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dat-phong/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/dat-phong/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dat-phong/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MjAwMTUsImV4cCI6MTgwNDU5MjgxNX0.Vx2pDmZq0bXxQubyPIqMF7bkb1-aYpvRwmU4TX6OeVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maPhong\":5,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1,\n  \"maNguoiDung\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/dat-phong/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dat-phong",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BinhLuan",
+			"item": [
+				{
+					"name": "binh-luan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/binh-luan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"binh-luan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "binh-luan/lay-binh-luan-theo-phong/{maPhong}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/binh-luan/lay-binh-luan-theo-phong/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"binh-luan",
+								"lay-binh-luan-theo-phong",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "binh-luan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maPhong\": 2,\n  \"maNguoiBinhLuan\": 3,\n  \"ngayBinhLuan\": \"2024-02-22T04:23:22.540Z\",\n  \"noiDung\": \"Phòng sạch\",\n  \"saoBinhLuan\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/binh-luan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"binh-luan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "binh-luan/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/binh-luan/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"binh-luan",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "binh-luan/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maPhong\": 8,\n  \"maNguoiBinhLuan\": 3,\n  \"ngayBinhLuan\": \"2024-02-22T04:23:22.540Z\",\n  \"noiDung\": \"Phòng sạch lắmmm\",\n  \"saoBinhLuan\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/binh-luan/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"binh-luan",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Nguyễn Thịnh\",\n  \"email\": \"thinhnguyen@gmail.com\",\n  \"password\": \"1234\",\n  \"phone\": \"0933882845\",\n  \"birthday\": \"26/10/1999\",\n  \"gender\": \"Male\",\n  \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"giaquyenvan@gmail.com\",\n  \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
