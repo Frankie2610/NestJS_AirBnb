@@ -3,6 +3,7 @@ import { UserDto } from './dto/user.dto';
 // import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { UpdatedUserDto } from './dto/updatedUser.dto';
 
 @Injectable()
 export class UserService {
@@ -10,6 +11,7 @@ export class UserService {
 
   async addUser(userDto: UserDto, req: any): Promise<any> {
     const BCRYPT_FACTOR = 10;
+    // kiểm tra có phải admin không?
     const { role } = req.user;
     if (role !== 'Admin' && role !== 'admin') {
       return {
@@ -121,8 +123,17 @@ export class UserService {
 
   async deleteUser(id: number, req: any): Promise<any> {
     try {
+      // kiểm tra có phải admin không?
       const { role } = req.user;
       if (role !== 'Admin' && role !== 'admin') {
+        return {
+          status: 400,
+          message: 'Unauthorized!!',
+        };
+      }
+      // kiểm tra tài khoản muốn xóa có phải của user đang singin không?
+      const userId = req.user.id;
+      if (id !== userId) {
         return {
           status: 400,
           message: 'Unauthorized!!',
@@ -157,9 +168,14 @@ export class UserService {
     }
   }
 
-  async updateUser(id: number, userDto: UserDto, userId: number): Promise<any> {
+  async updateUser(
+    id: number,
+    updatedUserDto: UpdatedUserDto,
+    req: any,
+  ): Promise<any> {
     const BCRYPT_FACTOR = 10;
-
+    // kiểm tra tài khoản muốn xóa có phải của user đang singin không?
+    const userId = req.user.id;
     if (id !== userId) {
       return {
         status: 400,
@@ -167,11 +183,12 @@ export class UserService {
       };
     }
     try {
-      const { name, email, pass_word, phone, birth_day, gender, role } =
-        userDto;
+      const { email, role } = req.user;
+      const { name, pass_word, phone, birth_day, gender } = updatedUserDto;
 
       const encodePassword = bcrypt.hashSync(pass_word, BCRYPT_FACTOR);
 
+      // update không cho sửa lại email và role
       const updatedUser = {
         name: name,
         email: email,

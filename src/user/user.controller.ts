@@ -28,6 +28,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { UpdatedUserDto } from './dto/updatedUser.dto';
 
 @ApiTags('NguoiDung')
 @ApiBearerAuth()
@@ -102,12 +103,11 @@ export class UserController {
   @Put(':id')
   async updateUser(
     @Param('id') id: number,
-    @Body() userDto: UserDto,
+    @Body() updatedUserDto: UpdatedUserDto,
     @Res() res,
     @Req() req,
   ): Promise<any> {
-    const userId = req.user.id;
-    const data = await this.userService.updateUser(+id, userDto, +userId);
+    const data = await this.userService.updateUser(+id, updatedUserDto, req);
     await res.status(data.status).json(data);
   }
 
@@ -130,15 +130,7 @@ export class UserController {
     },
   })
   @ApiProperty({ type: 'string', format: 'binary' })
-  uploadImage(@UploadedFile() file: Express.Multer.File, @Req() req) {
-    const role = req.user.role;
-    // kiểm tra xem có phải admin không?
-    if (role !== 'admin' && role !== 'Admin') {
-      return {
-        status: 400,
-        message: 'Unauthorized!',
-      };
-    }
+  uploadImage(@UploadedFile() file: Express.Multer.File) {
     return this.cloudinaryService.uploadImage(file);
   }
 }
