@@ -16,11 +16,10 @@ export class CommentService {
       };
     }
     try {
-      const { maPhong, maNguoiBinhLuan, ngayBinhLuan, noiDung, saoBinhLuan } =
-        commentDto;
+      const { maPhong, ngayBinhLuan, noiDung, saoBinhLuan } = commentDto;
       const newComment = {
         ma_phong: maPhong,
-        ma_nguoi_binh_luan: maNguoiBinhLuan,
+        ma_nguoi_binh_luan: +req.user.id,
         ngay_binh_luan: ngayBinhLuan,
         noidung: noiDung,
         sao_binh_luan: saoBinhLuan,
@@ -85,11 +84,10 @@ export class CommentService {
       };
     }
     try {
-      const { maPhong, maNguoiBinhLuan, ngayBinhLuan, noiDung, saoBinhLuan } =
-        commentDto;
+      const { maPhong, ngayBinhLuan, noiDung, saoBinhLuan } = commentDto;
       const updatedComment = {
         ma_phong: maPhong,
-        ma_nguoi_binh_luan: maNguoiBinhLuan,
+        ma_nguoi_binh_luan: +req.user.id,
         ngay_binh_luan: ngayBinhLuan,
         noidung: noiDung,
         sao_binh_luan: saoBinhLuan,

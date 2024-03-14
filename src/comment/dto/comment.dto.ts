@@ -4,8 +4,6 @@ export class CommentDto {
   @ApiProperty()
   maPhong: number;
   @ApiProperty()
-  maNguoiBinhLuan: number;
-  @ApiProperty()
   ngayBinhLuan: Date;
   @ApiProperty()
   noiDung: string;
