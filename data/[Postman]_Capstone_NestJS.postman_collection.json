@@ -141,7 +141,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/users/phan-trang-tim-kiem?page=2",
+							"raw": "http://localhost:3000/users/phan-trang-tim-kiem?page=2&size=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -154,6 +154,10 @@
 							"query": [
 								{
 									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "size",
 									"value": "2"
 								}
 							]
@@ -177,15 +181,20 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/33",
+							"raw": "http://localhost:3000/users?id=44",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"users",
-								"33"
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "44"
+								}
 							]
 						}
 					},
@@ -208,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Thanh Trúc\",\n    \"email\": \"thanhtruc1ewsdsdsdsdfdfdfsddsde22@gmail.com\",\n    \"pass_word\": \"1234\",\n    \"phone\": \"0902932808\",\n    \"birth_day\": \"2004-10-10\",\n    \"gender\": \"Female\",\n    \"role\": \"Admin\"\n}",
+							"raw": "{\n    \"name\": \"Thanh Hóa\",\n    \"email\": \"thanhtdsdsdsdrudsdsc1ewsdsdsdsdfdfdfhjhsddsde22@gmail.com\",\n    \"pass_word\": \"1234\",\n    \"phone\": \"0902932808\",\n    \"birth_day\": \"2004-10-10\",\n    \"gender\": \"Female\",\n    \"role\": \"Admin\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -475,7 +484,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/phong-thue/phan-trang-tim-kiem",
+							"raw": "http://localhost:3000/phong-thue/phan-trang-tim-kiem/2/3?keyword=d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -483,7 +492,15 @@
 							"port": "3000",
 							"path": [
 								"phong-thue",
-								"phan-trang-tim-kiem"
+								"phan-trang-tim-kiem",
+								"2",
+								"3"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "d"
+								}
 							]
 						}
 					},
@@ -628,10 +645,20 @@
 				{
 					"name": "vi-tri/phan-trang-tim-kiem",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImVtYWlsIjoiaHV5dmFuOTVAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzEwNDIyODcwLCJleHAiOjE4MDUwOTU2NzB9.Nq9S8nYn4TegXi0hJDVm_2k3goxmk_woZp_LEmEx21U",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/vi-tri/phan-trang-tim-kiem/2/2",
+							"raw": "http://localhost:3000/vi-tri/phan-trang-tim-kiem/2/3?keyword=u",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -641,7 +668,13 @@
 								"vi-tri",
 								"phan-trang-tim-kiem",
 								"2",
-								"2"
+								"3"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "u"
+								}
 							]
 						}
 					},
@@ -839,7 +872,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImVtYWlsIjoidGhpbmhuZ3V5ZW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDk5MjAwMTUsImV4cCI6MTgwNDU5MjgxNX0.Vx2pDmZq0bXxQubyPIqMF7bkb1-aYpvRwmU4TX6OeVM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImVtYWlsIjoiZ2lhcXV5ZW52YW5AZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzA5OTcxODEwLCJleHAiOjE4MDQ2NDQ2MTB9.8PRDwMYsn0Uvuz6OR02fycYm2r-s1fHtl2tAVoATDpw",
 									"type": "string"
 								}
 							]
@@ -848,7 +881,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"maPhong\":16,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1\n}",
+							"raw": "{\n  \"maPhong\":14,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -906,7 +939,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"maPhong\":5,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1,\n  \"maNguoiDung\": 2\n}",
+							"raw": "{\n  \"maPhong\":5,\n  \"ngayDen\": \"2024-02-22T04:23:22.540Z\",\n  \"ngayDi\": \"2024-02-22T04:23:22.541Z\",\n  \"soLuongKhach\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -914,7 +947,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/dat-phong/2",
+							"raw": "http://localhost:3000/dat-phong/12",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -922,7 +955,7 @@
 							"port": "3000",
 							"path": [
 								"dat-phong",
-								"2"
+								"12"
 							]
 						}
 					},
@@ -1062,7 +1095,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Nguyễn Thịnh\",\n  \"email\": \"thinhnguyen@gmail.com\",\n  \"password\": \"1234\",\n  \"phone\": \"0933882845\",\n  \"birthday\": \"26/10/1999\",\n  \"gender\": \"Male\",\n  \"role\": \"user\"\n}",
+							"raw": "{\n  \"name\": \"Nguyễn Thịnh\",\n  \"email\": \"thinhnguyen12444@gmail.com\",\n  \"password\": \"1234\",\n  \"phone\": \"0933882845\",\n  \"birthday\": \"26/10/1999\",\n  \"gender\": \"Male\",\n  \"role\": \"user\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

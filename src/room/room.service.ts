@@ -206,7 +206,11 @@ export class RoomService {
     }
   }
 
-  async getPaginationList(page, size, keyword): Promise<any> {
+  async getPaginationList(
+    page: number,
+    size: number,
+    keyword: string,
+  ): Promise<any> {
     try {
       const numPage = Number(page);
       const numSize = Number(size);
