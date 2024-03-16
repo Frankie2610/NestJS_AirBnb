@@ -108,7 +108,7 @@ export class LocationController {
     res.status(data.status).json(data);
   }
 
-  //upload avarar
+  //upload hình theo vị trí
   @Post('/upload-hinh-vitri')
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
